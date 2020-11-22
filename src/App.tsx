@@ -9,8 +9,8 @@ import Global from './styles/global'
 function App() {
   return (
     <AuthProvider>
-    <SignUp/>
-    <Global/>
+      <SignUp/>
+      <Global/>
     </AuthProvider>
   );
 }
