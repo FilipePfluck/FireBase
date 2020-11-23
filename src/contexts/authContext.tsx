@@ -5,14 +5,10 @@ import { auth } from '../firebase'
 
 interface AuthContextData {
     currentUser: firebase.User | null
-    signup(email: string, password: string): Promise<firebase.auth.UserCredential>
+    /* signup(email: string, password: string): Promise<firebase.auth.UserCredential> */
 }
 
-const AuthContext = createContext({} as AuthContextData)
-
-export function useAuth() {
-    return useContext(AuthContext)
-}
+const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
 export const AuthProvider: React.FC = ({children}) => {
     const [currentUser, setCurrentUser] = useState<firebase.User | null>(null)
@@ -39,4 +35,8 @@ export const AuthProvider: React.FC = ({children}) => {
             {children}
         </AuthContext.Provider>
     )
+}
+
+export function useAuth() {
+    return useContext(AuthContext)
 }
